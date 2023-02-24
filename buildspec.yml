@@ -25,11 +25,11 @@ phases:
       - docker push 875525659788.dkr.ecr.us-east-1.amazonaws.com/service20:latest
       - docker push 875525659788.dkr.ecr.us-east-1.amazonaws.com/service21:latest
       - echo Writing image definitions file...
-      - echo "875525659788.dkr.ecr.us-east-1.amazonaws.com/service20:latest" > service-1.yml 
-      - echo "875525659788.dkr.ecr.us-east-1.amazonaws.com/service21:latest" > service-2.yml
+      - echo "875525659788.dkr.ecr.us-east-1.amazonaws.com/service20:latest" > service-1.json 
+      - echo "875525659788.dkr.ecr.us-east-1.amazonaws.com/service21:latest" > service-2.json 
 
 artifacts:
     files:
-        - service-1.yml
-        - service-2.yml
+        - service-1.json 
+        - service-2.json 
 
