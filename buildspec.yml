@@ -12,17 +12,21 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...  
-      -         
-      - docker build -t service20 .
+      - cd ia
+      - docker build -t service20:latest .
+      - cd ../iaf
+      - docker build -t service21:latest .
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 875525659788.dkr.ecr.us-east-1.amazonaws.com/service1:latest
-      - docker push 875525659788.dkr.ecr.us-east-1.amazonaws.com/service2:latest
+      - docker tag service20:latest 875525659788.dkr.ecr.us-east-1.amazonaws.com/service20:latest
+      - docker tag service21:latest 875525659788.dkr.ecr.us-east-1.amazonaws.com/service21:latest
+      - docker push 875525659788.dkr.ecr.us-east-1.amazonaws.com/service20:latest
+      - docker push 875525659788.dkr.ecr.us-east-1.amazonaws.com/service21:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"iaf-container","imageUri":"875525659788.dkr.ecr.us-east-1.amazonaws.com/service1:latest"}]' > imagedefinitions.json 
-      - printf '[{"name":"ia-container","imageUri":"875525659788.dkr.ecr.us-east-1.amazonaws.com/service2:latest"}]' > imagedefinitions1.json 
+      - printf '[{"name":"iaf-container","imageUri":"875525659788.dkr.ecr.us-east-1.amazonaws.com/service20:latest"}]' > imagedefinitions.json 
+      - printf '[{"name":"ia-container","imageUri":"875525659788.dkr.ecr.us-east-1.amazonaws.com/service21:latest"}]' > imagedefinitions1.json 
 
 artifacts:
     files:
