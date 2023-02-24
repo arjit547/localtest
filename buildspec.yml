@@ -29,7 +29,8 @@ phases:
       - echo "875525659788.dkr.ecr.us-east-1.amazonaws.com/service21:latest" > service-2.json 
 
 artifacts:
-    files:
-        - service-1.json 
-        - service-2.json 
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: 'build'
 
